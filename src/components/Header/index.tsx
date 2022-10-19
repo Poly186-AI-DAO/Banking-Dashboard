@@ -5,8 +5,6 @@ import styled from 'styled-components'
 
 import Logo from '../../assets/svg/logo.svg'
 import LogoDark from '../../assets/svg/logo_white.svg'
-import Wordmark from '../../assets/svg/wordmark.svg'
-import WordmarkDark from '../../assets/svg/wordmark_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useNativeCurrencyBalances } from '../../state/wallet/hooks'
@@ -14,10 +12,9 @@ import { useNativeCurrencyBalances } from '../../state/wallet/hooks'
 import Settings from '../Settings'
 
 import Row, { RowFixed } from '../Row'
-import { Text } from 'rebass'
 import Web3Status from '../Web3Status'
 import { useTranslation } from 'react-i18next'
-import { ExternalLink, TYPE } from '../../theme'
+import { TYPE } from '../../theme'
 import MobileOptions from './MobileOptions'
 import { useNativeCurrency } from '../../hooks/useNativeCurrency'
 
@@ -34,6 +31,7 @@ const HeaderFrame = styled.div`
   top: 0;
   position: relative;
   padding: 1rem;
+  background-color: #000000 !important;
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
@@ -67,7 +65,7 @@ const HeaderControls = styled.div`
     z-index: 99;
     height: 72px;
     border-radius: 12px 12px 0 0;
-    background-color: ${({ theme }) => theme.bg1};
+    background-color: #000000 !important;
   `};
 `
 
@@ -121,11 +119,11 @@ const HeaderLinks = styled(Row)`
   `};
 `
 
-const AccountElement = styled.div<{ active: boolean, networkError: boolean }>`
+const AccountElement = styled.div<{ active: boolean; networkError: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${props => props.networkError ? 'transparent' : ({ theme }) => theme.bg1};
+  background-color: ${props => (props.networkError ? 'transparent' : ({ theme }) => theme.bg1)};
   border: solid 2px transparent;
   box-sizing: border-box;
   color: ${({ theme }) => theme.yellow1};
@@ -154,14 +152,6 @@ const Title = styled.a`
   :hover {
     cursor: pointer;
   }
-`
-
-const TitleText = styled(Row)`
-  width: fit-content;
-  white-space: nowrap;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `};
 `
 
 const DXswapIcon = styled.div`
@@ -199,26 +189,6 @@ export const StyledNavLink = styled(NavLink).attrs({
   `};
 `
 
-const StyledExternalLink = styled(ExternalLink).attrs({
-  activeClassName
-})<{ isActive?: boolean }>`
-  ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: ${({ theme }) => theme.text5};
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19.5px;
-  width: fit-content;
-  text-decoration: none !important;
-  margin: 0 12px;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `};
-`
-
 function Header({ history }: { history: any }) {
   const { account } = useActiveWeb3React()
   const { t } = useTranslation()
@@ -236,9 +206,6 @@ function Header({ history }: { history: any }) {
           <DXswapIcon>
             <img src={isDark ? LogoDark : Logo} alt="logo" />
           </DXswapIcon>
-          <TitleText>
-            <img style={{ marginLeft: '4px', marginTop: '4px' }} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-          </TitleText>
         </Title>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => history.location.pathname.includes('/swap')}>
@@ -256,26 +223,15 @@ function Header({ history }: { history: any }) {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={`https://1hive.org/`}>
-            Governance{' '}
-            <Text ml="4px" fontSize="11px">
-              ↗
-            </Text>
-          </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={`https://1hive.io/`}>
-            Farms{' '}
-            <Text ml="4px" fontSize="11px">
-              ↗
-            </Text>
-          </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={`https://info.honeyswap.org/`}>
-            Charts{' '}
-            <Text ml="4px" fontSize="11px">
-              ↗
-            </Text>
-          </StyledExternalLink>
+          <StyledNavLink
+            id={`bridge-nav-link`}
+            to={'/bridge'}
+            isActive={() => history.location.pathname.includes('/bridge')}
+          >
+            {t('Bridge')}
+          </StyledNavLink>
           <MobileSettingsWrap>
-            <Settings />
+            {/* <Settings /> */}
           </MobileSettingsWrap>
           <MoreLinksIcon>
             <MobileOptions history={history} />
@@ -297,7 +253,7 @@ function Header({ history }: { history: any }) {
               >
                 {userNativeCurrencyBalance?.toSignificant(4)} {nativeCurrency.symbol}
               </TYPE.black>
-            ) : null }
+            ) : null}
             <Web3Status />
           </AccountElement>
         </HeaderElement>

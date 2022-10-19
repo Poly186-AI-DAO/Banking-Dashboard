@@ -13,6 +13,7 @@ import RemoveLiquidity from './RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
+import backgroundImage from '../assets/images/background-image.png'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -32,9 +33,10 @@ const HeaderWrapper = styled.div`
 const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 172px);
+  min-height: calc(100vh - 120px);
   width: 100%;
   padding-top: 60px;
+  background-image: url(${backgroundImage});
   align-items: center;
   flex: 1;
   overflow-y: auto;
@@ -58,6 +60,7 @@ const Footer = styled.div`
   text-align: center;
   width: 420px;
   margin: auto;
+  padding-top: 10px;
   color: #fffa;
 `
 
@@ -93,8 +96,7 @@ export default function App() {
             <Marginer />
           </BodyWrapper>
 
-          <Footer>
-            “That which is not good for the <span role="img" aria-label="bee">🐝</span>-hive cannot be good for the <span role="img" aria-label="bee">🐝</span>.”  —Marcus Aurelius</Footer>
+          <Footer>“Raising the conscious awareness of the human race”</Footer>
         </AppWrapper>
       </HashRouter>
     </Suspense>

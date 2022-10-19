@@ -34,7 +34,6 @@ const StyledDialogOverlay = animated(styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => transparentize(0.65, theme.black)};
 `)
 
 const StyledMenuIcon = styled(Settings)`
@@ -44,7 +43,7 @@ const StyledMenuIcon = styled(Settings)`
   cursor: pointer;
 
   > * {
-    stroke: ${({ theme }) => theme.text4};
+    stroke: #FFF;
   }
 `
 

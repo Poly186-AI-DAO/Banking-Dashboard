@@ -7,6 +7,7 @@ import { AutoColumn } from '../Column'
 
 export const Wrapper = styled.div`
   position: relative;
+  background-color: #101010;
 `
 
 export const ArrowWrapper = styled.div<{ clickable: boolean }>`
@@ -19,6 +20,16 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #8200FF;
+  border-radius: 50%;
+`
+
+export const SwapHeader = styled.div`
+  display: flex;
+  font-weight: 600px;
+  font-size: 22px;
+  font-family: 'Josefin Sans';
+  justify-content: space-between;
 `
 
 export const SwitchTokensAmountsContainer = styled.div`
@@ -54,15 +65,15 @@ export const SectionBreak = styled.div`
   background-color: ${({ theme }) => theme.bg3};
 `
 
-export const ErrorText = styled(Text)<{ severity?: 0 | 1 | 2 | 3 | 4 }>`
+export const ErrorText = styled(Text) <{ severity?: 0 | 1 | 2 | 3 | 4 }>`
   color: ${({ theme, severity }) =>
     severity === 3 || severity === 4
       ? theme.red1
       : severity === 2
-      ? theme.yellow2
-      : severity === 1
-      ? theme.text1
-      : theme.green1};
+        ? theme.yellow2
+        : severity === 1
+          ? theme.text1
+          : theme.green1};
 `
 
 export const StyledBalanceMaxMini = styled.button`

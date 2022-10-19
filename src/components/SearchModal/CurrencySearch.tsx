@@ -31,7 +31,7 @@ interface CurrencySearchProps {
 const Wrapper = styled.div`
   width: 100%;
 
-  background: ${({ theme }) => transparentize(0, theme.bg2)};
+  background: ${({ theme }) => transparentize(0, '#101010')};
 `
 
 export function CurrencySearch({
@@ -129,7 +129,7 @@ export function CurrencySearch({
 
   return (
     <Wrapper>
-      <Column style={{ width: '100%', height: '100%' }}>
+      <Column style={{ width: '100%', height: '100%', background: '#101010' }}>
         <PaddedColumn gap="16px">
           <RowBetween>
             <TYPE.body fontWeight={500} fontSize={16}>

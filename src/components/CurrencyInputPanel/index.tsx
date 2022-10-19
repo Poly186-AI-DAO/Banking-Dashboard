@@ -23,7 +23,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   align-items: center;
   font-size: ${({ selected }) => (selected ? '26px' : '12px')};
   font-weight: ${({ selected }) => (selected ? 600 : 700)};
-  background-color: ${({ selected, theme }) => (selected ? 'transparent' : theme.primary1)};
+  background-color: ${({ selected, theme }) => (selected ? 'transparent' : "#101010")};
   border-radius: 8px;
   height: 28px;
   padding: ${({ selected }) => (selected ? '0' : '0 12px')};
@@ -35,6 +35,9 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  border: #FFF solid 1px;
+  background: #000;
+  padding: 0 6px;
 `
 
 const LabelRow = styled.div`
@@ -57,6 +60,7 @@ const StyledDropDown = styled(DropDown)<{ selected: boolean }>`
   height: 11px;
   width: 11px;
 
+
   path {
     stroke: ${({ selected, theme }) => (selected ? theme.text1 : theme.white)};
     stroke-width: 1.5px;
@@ -72,9 +76,9 @@ const InputPanel = styled.div<{ hideInput?: boolean }>`
 const Container = styled(DarkCard)<{ hideInput: boolean; focused: boolean }>`
   height: 80px;
   ::before {
-    background: ${({ theme }) => theme.bg1And2};
+    background: #2A260E;
   }
-  background: ${({ focused, theme }) => (focused ? theme.bg3 : 'auto')};
+  background: #2A260E;
   transition: background 0.3s ease;
   padding: 16px;
 `

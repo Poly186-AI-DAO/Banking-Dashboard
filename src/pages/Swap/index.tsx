@@ -1,8 +1,9 @@
 import { CurrencyAmount, JSBI, Trade, Token, RoutablePlatform } from 'dxswap-sdk'
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
+import Settings from '../../components/Settings'
 import { ButtonError, ButtonPrimary, ButtonConfirmed } from '../../components/Button'
 import Card from '../../components/Card'
 import Column, { AutoColumn } from '../../components/Column'
@@ -12,7 +13,7 @@ import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import { AutoRow, RowBetween, RowFixed } from '../../components/Row'
 import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
-import { ArrowWrapper, SwapCallbackError, SwitchTokensAmountsContainer, Wrapper } from '../../components/swap/styleds'
+import { ArrowWrapper, SwapCallbackError, SwapHeader, SwitchTokensAmountsContainer, Wrapper } from '../../components/swap/styleds'
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
@@ -45,6 +46,7 @@ import BeeEth from '../../assets/svg/bee-eth.svg'
 const RotatedRepeat = styled(Repeat)`
   transform: rotate(90deg);
   width: 14px;
+  color: #FFF;
 `
 
 const SwitchIconContainer = styled.div`
@@ -52,6 +54,13 @@ const SwitchIconContainer = styled.div`
   position: relative;
   width: 100%;
 `
+
+// const GoToBridge = styled.div`
+//   display: flex;
+//   padding: 0;
+//   margin: 0;
+//   justify-content: end;
+// `
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -79,7 +88,7 @@ export default function Swap() {
   }, [])
 
   const { account, chainId } = useActiveWeb3React()
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
   const toggleWalletModal = useWalletModalToggle()
@@ -111,13 +120,13 @@ export default function Swap() {
 
   const parsedAmounts = showWrap
     ? {
-        [Field.INPUT]: parsedAmount,
-        [Field.OUTPUT]: parsedAmount
-      }
+      [Field.INPUT]: parsedAmount,
+      [Field.OUTPUT]: parsedAmount
+    }
     : {
-        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
-      }
+      [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+      [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
+    }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput } = useSwapActionHandlers()
   const isValid = !swapInputError
@@ -265,11 +274,11 @@ export default function Swap() {
 
   let currencyMessage = ""
   if (chainId === 137) {
-  if (FEE_MESSAGE_CURRENCIES_CODE.includes(inputCurrency)) { 
-    currencyMessage = inputCurrency
-  } else if (FEE_MESSAGE_CURRENCIES_CODE.includes(outputCurrency)) {
-    currencyMessage = outputCurrency
-  }
+    if (FEE_MESSAGE_CURRENCIES_CODE.includes(inputCurrency)) {
+      currencyMessage = inputCurrency
+    } else if (FEE_MESSAGE_CURRENCIES_CODE.includes(outputCurrency)) {
+      currencyMessage = outputCurrency
+    }
   }
   return (
     <>
@@ -289,6 +298,10 @@ export default function Swap() {
       <AppBody tradeDetailsOpen={!!trade}>
         {/* <SwapPoolTabs active={'swap'} /> */}
         <Wrapper id="swap-page">
+          <SwapHeader>
+            <p>SWAP TOKENS</p>
+            <Settings />
+          </SwapHeader>
           <ConfirmSwapModal
             isOpen={showConfirm}
             trade={trade}
@@ -324,7 +337,7 @@ export default function Swap() {
                   }}
                 >
                   <ArrowWrapper clickable>
-                    <RotatedRepeat color={theme.text4} />
+                    <RotatedRepeat />
                   </ArrowWrapper>
                 </SwitchTokensAmountsContainer>
               </SwitchIconContainer>
@@ -340,9 +353,9 @@ export default function Swap() {
               />
               {currencyMessage && (
                 <AutoColumn gap="3px" justify={'center'}>
-                  <div style={{display: "flex", border: "1px solid", borderRadius:"7px", borderColor: "white", padding:"4px", margin: "5px 0"}}>
-                    <img src={BeeEth} alt="" style={{marginRight:"3px"}}/>
-                    <h5 style={{textAlign:'center'}}>{`Trades with ${currencyMessage} token have a fee of only 0.15%`}</h5>
+                  <div style={{ display: "flex", border: "1px solid", borderRadius: "7px", borderColor: "white", padding: "4px", margin: "5px 0" }}>
+                    <img src={BeeEth} alt="" style={{ marginRight: "3px" }} />
+                    <h5 style={{ textAlign: 'center' }}>{`Trades with ${currencyMessage} token have a fee of only 0.15%`}</h5>
                   </div>
                 </AutoColumn>
               )}
@@ -443,8 +456,8 @@ export default function Swap() {
                     {swapInputError
                       ? swapInputError
                       : priceImpactSeverity > 3 && !isExpertMode
-                      ? `Price Impact Too High`
-                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                        ? `Price Impact Too High`
+                        : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                   </Text>
                 </ButtonPrimary>
               )}
@@ -472,6 +485,7 @@ export default function Swap() {
               </RowBetween>
             )}
           </AutoColumn>
+
         </Wrapper>
       </AppBody>
       <AdvancedSwapDetailsDropdown
