@@ -54,14 +54,13 @@ const SwitchIconContainer = styled.div`
   position: relative;
   width: 100%;
 `
-
-// const GoToBridge = styled.div`
-//   display: flex;
-//   padding: 0;
-//   margin: 0;
-//   justify-content: end;
-// `
-
+const Footer = styled.div`
+  font-size: 12px;
+  text-align: center;
+  // width: 420px;
+  margin: auto;
+  color: #fff;
+`
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
   const [platformOverride, setPlatformOverride] = useState<RoutablePlatform | null>(null)
@@ -493,6 +492,7 @@ export default function Swap() {
         allPlatformTrades={allPlatformTrades}
         onSelectedPlatformChange={setPlatformOverride}
       />
+      <Footer>“Raising the conscious awareness of the human race”</Footer>
     </>
   )
 }

@@ -2,7 +2,8 @@ import React from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 
 import styled from 'styled-components'
-
+import { Text } from 'rebass'
+import { ExternalLink, TYPE } from '../../theme'
 import Logo from '../../assets/svg/logo.svg'
 import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
@@ -14,7 +15,6 @@ import Settings from '../Settings'
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
 import { useTranslation } from 'react-i18next'
-import { TYPE } from '../../theme'
 import MobileOptions from './MobileOptions'
 import { useNativeCurrency } from '../../hooks/useNativeCurrency'
 
@@ -137,6 +137,29 @@ const AccountElement = styled.div<{ active: boolean; networkError: boolean }>`
   }
 `
 
+const activeClassName = 'ACTIVE'
+
+const StyledExternalLink = styled(ExternalLink).attrs({
+  activeClassName
+})<{ isActive?: boolean }>`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: left;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text5};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
+  width: fit-content;
+  text-decoration: none !important;
+  margin: 0 12px;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    display: none;
+  `};
+`
+
+
 const Title = styled.a`
   display: flex;
   align-items: center;
@@ -157,11 +180,12 @@ const Title = styled.a`
 const DXswapIcon = styled.div`
   img {
     margin-left: 5px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 60px;
     margin-bottom: -5px;
   }
 `
-
-const activeClassName = 'ACTIVE'
 
 export const StyledNavLink = styled(NavLink).attrs({
   activeClassName
@@ -223,16 +247,13 @@ function Header({ history }: { history: any }) {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink
-            id={`bridge-nav-link`}
-            to={'/bridge'}
-            isActive={() => history.location.pathname.includes('/bridge')}
-          >
-            {t('Bridge')}
-          </StyledNavLink>
-          <MobileSettingsWrap>
-            {/* <Settings /> */}
-          </MobileSettingsWrap>
+          <StyledExternalLink id={`bridge-nav-link`} href={`http://monette.poly186.io/`}>
+            Bridge{' '}
+            <Text ml="4px" fontSize="11px">
+              ↗
+            </Text>
+          </StyledExternalLink>
+          <MobileSettingsWrap>{/* <Settings /> */}</MobileSettingsWrap>
           <MoreLinksIcon>
             <MobileOptions history={history} />
           </MoreLinksIcon>
