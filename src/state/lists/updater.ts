@@ -3,6 +3,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { setTokenList } from './actions'
 import { useDispatch } from 'react-redux'
 import { Fetcher, TokenList } from 'dxswap-sdk'
+// import p8 from '../../assets/svg/logo.svg'
 
 export default function Updater() {
   const { chainId, library } = useActiveWeb3React()
@@ -21,7 +22,7 @@ export default function Updater() {
             name: 'P8',
             symbol: 'P8',
             decimals: 18,
-            logoURI: 'https://tokens.1inch.exchange/0x6b175474e89094c44da98b954eedeac495271d0f.png'
+            logoURI: "https://i.postimg.cc/wBmS6RMX/p8.jpg"
           })
           console.log(tokenList.tokens)
           if (tokenList) dispatch(setTokenList(tokenList))

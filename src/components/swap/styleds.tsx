@@ -7,6 +7,7 @@ import { AutoColumn } from '../Column'
 
 export const Wrapper = styled.div`
   position: relative;
+  margin: 0 32px;
   background-color: #101010;
 `
 

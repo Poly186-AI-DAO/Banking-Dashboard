@@ -33,10 +33,12 @@ const HeaderWrapper = styled.div`
 const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 86px);
   width: 100%;
   padding-top: 60px;
   background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: cover;
   align-items: center;
   flex: 1;
   overflow-y: auto;
@@ -55,14 +57,7 @@ const Marginer = styled.div`
   margin-top: 5rem;
 `
 
-const Footer = styled.div`
-  font-size: 12px;
-  text-align: center;
-  width: 420px;
-  margin: auto;
-  padding-top: 10px;
-  color: #fffa;
-`
+
 
 export default function App() {
   return (
@@ -95,8 +90,6 @@ export default function App() {
             </Web3ReactManager>
             <Marginer />
           </BodyWrapper>
-
-          <Footer>“Raising the conscious awareness of the human race”</Footer>
         </AppWrapper>
       </HashRouter>
     </Suspense>

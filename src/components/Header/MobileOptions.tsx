@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { ApplicationModal } from '../../state/application/actions'
 import { useCloseModals, useModalOpen, useToggleMobileMenu } from '../../state/application/hooks'
 import { transparentize } from 'polished'
+import { Text } from 'rebass'
+import { ExternalLink } from '../../theme'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 import { Menu } from 'react-feather'
@@ -11,7 +13,6 @@ import { Box, Flex } from 'rebass'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 
 const StyledMenu = styled.div`
-  margin-left: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +42,22 @@ const StyledNavLink = styled(NavLink).attrs({
     font-weight: 600;
     color: ${({ theme }) => theme.white};
   }
+`
+
+const StyledExternalLink = styled(ExternalLink).attrs({
+  activeClassName
+})`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: left;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text5};
+  width: fit-content;
+  height: 36px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.5px;
 `
 
 const Wrapper = styled(Flex)`
@@ -88,14 +105,12 @@ export default function MobileOptions({ history }: { history: any }) {
             </StyledNavLink>
           </Box>
           <Box>
-            <StyledNavLink
-              id={`bridge-nav-link`}
-              to={'/bridge'}
-              onClick={closeModals}
-              isActive={() => history.location.pathname.includes('/bridge')}
-            >
-              {t('Bridge')}
-            </StyledNavLink>
+            <StyledExternalLink id={`bridge-nav-link`} href={`http://monette.poly186.io/`}>
+              Bridge{' '}
+              <Text ml="4px" fontSize="11px">
+                ↗
+              </Text>
+            </StyledExternalLink>
           </Box>
         </Wrapper>
       </Modal>
