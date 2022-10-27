@@ -159,7 +159,6 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   `};
 `
 
-
 const Title = styled.a`
   display: flex;
   align-items: center;
@@ -247,7 +246,7 @@ function Header({ history }: { history: any }) {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledExternalLink id={`bridge-nav-link`} href={`http://monette.poly186.io/`}>
+          <StyledExternalLink id={`bridge-nav-link`} href={`https://monette-bridge.poly186.io/`}>
             Bridge{' '}
             <Text ml="4px" fontSize="11px">
               ↗
