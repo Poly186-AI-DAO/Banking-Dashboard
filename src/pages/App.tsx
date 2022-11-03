@@ -35,7 +35,7 @@ const BodyWrapper = styled.div`
   flex-direction: column;
   min-height: calc(100vh - 86px);
   width: 100%;
-  padding-top: calc(12% + 0.15vw + 0.15vh);
+  padding-top: calc((12% + 0.15vw + 0.15vh - 86px));
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
