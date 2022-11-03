@@ -10,7 +10,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useNativeCurrencyBalances } from '../../state/wallet/hooks'
 
-import Settings from '../Settings'
+// import Settings from '../Settings'
 
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
@@ -94,13 +94,13 @@ const MobileSettingsWrap = styled.div`
   `}
 `
 
-const DesktopSettingsWrap = styled.div`
-  display: flex;
-  align-items: center;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `}
-`
+// const DesktopSettingsWrap = styled.div`
+//   display: flex;
+//   align-items: center;
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//     display: none;
+//   `}
+// `
 
 const HeaderRow = styled(RowFixed)<{ isDark: boolean }>`
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -247,7 +247,7 @@ function Header({ history }: { history: any }) {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledExternalLink id={`bridge-nav-link`} href={`http://monette.poly186.io/`}>
+          <StyledExternalLink id={`bridge-nav-link`} href={`https://www.monette-bridge.poly186.io/`}>
             Bridge{' '}
             <Text ml="4px" fontSize="11px">
               ↗
@@ -278,9 +278,9 @@ function Header({ history }: { history: any }) {
             <Web3Status />
           </AccountElement>
         </HeaderElement>
-        <DesktopSettingsWrap>
+        {/* <DesktopSettingsWrap>
           <Settings />
-        </DesktopSettingsWrap>
+        </DesktopSettingsWrap> */}
       </HeaderControls>
     </HeaderFrame>
   )

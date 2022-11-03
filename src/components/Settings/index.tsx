@@ -15,9 +15,7 @@ import { TYPE, ExternalLink, LinkStyledButton, CloseIcon } from '../../theme'
 import { ButtonError } from '../Button'
 import { AutoColumn } from '../Column'
 import Modal from '../Modal'
-import QuestionHelper from '../QuestionHelper'
-import Row, { RowBetween, RowFixed } from '../Row'
-import Toggle from '../Toggle'
+import Row, { RowBetween } from '../Row'
 import TransactionSettings from '../TransactionSettings'
 import border8pxRadius from '../../assets/images/border-8px-radius.png'
 import { useTransition, animated } from 'react-spring'
@@ -281,32 +279,6 @@ export default function SettingsTab() {
                       deadline={ttl}
                       setDeadline={setTtl}
                     />
-                    <Text fontWeight={600} fontSize={14}>
-                      Interface settings
-                    </Text>
-                    <RowBetween>
-                      <RowFixed>
-                        <TYPE.body fontWeight={500} fontSize="12px" lineHeight="15px">
-                          Toggle expert mode
-                        </TYPE.body>
-                        <QuestionHelper text="Bypasses confirmation modals and allows high slippage trades. Use at your own risk." />
-                      </RowFixed>
-                      <Toggle
-                        id="toggle-expert-mode-button"
-                        isActive={expertMode}
-                        toggle={
-                          expertMode
-                            ? () => {
-                                toggleExpertMode()
-                                setShowConfirmation(false)
-                              }
-                            : () => {
-                                toggle()
-                                setShowConfirmation(true)
-                              }
-                        }
-                      />
-                    </RowBetween>
                     {/* <RowBetween>
                         <RowFixed>
                           <TYPE.body fontWeight={500} fontSize="12px" lineHeight="15px">
@@ -340,10 +312,10 @@ export default function SettingsTab() {
 
                     <MenuBanner id="link" href="https://1hive.org/" rel="noopener noreferrer" target="_blank">
                       <TYPE.body fontWeight={700} fontSize="10px" letterSpacing="3px" color="text1" marginBottom="4px">
-                        Built by Bees
+                        Forked from HoneySwap
                       </TYPE.body>
                       <TYPE.body fontWeight={500} fontSize="10px" letterSpacing="3px" color="text1">
-                        1Hive.org
+                      Poly186
                       </TYPE.body>
                     </MenuBanner>
                   </MenuFlyoutBottom>
