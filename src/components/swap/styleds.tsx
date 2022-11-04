@@ -9,6 +9,12 @@ export const Wrapper = styled.div`
   position: relative;
   margin: 0 32px;
   background-color: #101010;
+  @media screen and (min-width: 1500px) {
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `
 
 export const ArrowWrapper = styled.div<{ clickable: boolean }>`
@@ -21,7 +27,7 @@ export const ArrowWrapper = styled.div<{ clickable: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #8200FF;
+  background-color: #8200ff;
   border-radius: 50%;
 `
 
@@ -66,15 +72,15 @@ export const SectionBreak = styled.div`
   background-color: ${({ theme }) => theme.bg3};
 `
 
-export const ErrorText = styled(Text) <{ severity?: 0 | 1 | 2 | 3 | 4 }>`
+export const ErrorText = styled(Text)<{ severity?: 0 | 1 | 2 | 3 | 4 }>`
   color: ${({ theme, severity }) =>
     severity === 3 || severity === 4
       ? theme.red1
       : severity === 2
-        ? theme.yellow2
-        : severity === 1
-          ? theme.text1
-          : theme.green1};
+      ? theme.yellow2
+      : severity === 1
+      ? theme.text1
+      : theme.green1};
 `
 
 export const StyledBalanceMaxMini = styled.button`

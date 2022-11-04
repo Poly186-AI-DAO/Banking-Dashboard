@@ -12,7 +12,6 @@ import 'react-datepicker/dist/react-datepicker.min.css'
 import { transparentize } from 'polished'
 import backgroundImage from '../assets/images/background-image.png'
 
-
 export * from './components'
 
 export const MEDIA_WIDTHS = {
@@ -218,6 +217,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #101016;
 }
 
 * {

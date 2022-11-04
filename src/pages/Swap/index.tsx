@@ -13,7 +13,13 @@ import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import { AutoRow, RowBetween, RowFixed } from '../../components/Row'
 import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
-import { ArrowWrapper, SwapCallbackError, SwapHeader, SwitchTokensAmountsContainer, Wrapper } from '../../components/swap/styleds'
+import {
+  ArrowWrapper,
+  SwapCallbackError,
+  SwapHeader,
+  SwitchTokensAmountsContainer,
+  Wrapper
+} from '../../components/swap/styleds'
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
@@ -42,11 +48,10 @@ import { useTargetedChainIdFromUrl } from '../../hooks/useTargetedChainIdFromUrl
 import NetworkWarningModal from '../../components/NetworkWarningModal'
 import BeeEth from '../../assets/svg/bee-eth.svg'
 
-
 const RotatedRepeat = styled(Repeat)`
   transform: rotate(90deg);
   width: 14px;
-  color: #FFF;
+  color: #fff;
 `
 
 const SwitchIconContainer = styled.div`
@@ -59,6 +64,7 @@ const Footer = styled.div`
   text-align: center;
   // width: 420px;
   margin: auto;
+  margin-top: 100px;
   color: #fff;
 `
 export default function Swap() {
@@ -119,13 +125,13 @@ export default function Swap() {
 
   const parsedAmounts = showWrap
     ? {
-      [Field.INPUT]: parsedAmount,
-      [Field.OUTPUT]: parsedAmount
-    }
+        [Field.INPUT]: parsedAmount,
+        [Field.OUTPUT]: parsedAmount
+      }
     : {
-      [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-      [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
-    }
+        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount
+      }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput } = useSwapActionHandlers()
   const isValid = !swapInputError
@@ -265,13 +271,12 @@ export default function Swap() {
     [onCurrencySelection]
   )
 
-  const FEE_MESSAGE_CURRENCIES_CODE = ["ETH"]
+  const FEE_MESSAGE_CURRENCIES_CODE = ['ETH']
 
+  const inputCurrency = currencies[Field.INPUT]?.symbol || ''
+  const outputCurrency = currencies[Field.OUTPUT]?.symbol || ''
 
-  const inputCurrency = currencies[Field.INPUT]?.symbol || ""
-  const outputCurrency = currencies[Field.OUTPUT]?.symbol || ""
-
-  let currencyMessage = ""
+  let currencyMessage = ''
   if (chainId === 137) {
     if (FEE_MESSAGE_CURRENCIES_CODE.includes(inputCurrency)) {
       currencyMessage = inputCurrency
@@ -352,9 +357,20 @@ export default function Swap() {
               />
               {currencyMessage && (
                 <AutoColumn gap="3px" justify={'center'}>
-                  <div style={{ display: "flex", border: "1px solid", borderRadius: "7px", borderColor: "white", padding: "4px", margin: "5px 0" }}>
-                    <img src={BeeEth} alt="" style={{ marginRight: "3px" }} />
-                    <h5 style={{ textAlign: 'center' }}>{`Trades with ${currencyMessage} token have a fee of only 0.15%`}</h5>
+                  <div
+                    style={{
+                      display: 'flex',
+                      border: '1px solid',
+                      borderRadius: '7px',
+                      borderColor: 'white',
+                      padding: '4px',
+                      margin: '5px 0'
+                    }}
+                  >
+                    <img src={BeeEth} alt="" style={{ marginRight: '3px' }} />
+                    <h5
+                      style={{ textAlign: 'center' }}
+                    >{`Trades with ${currencyMessage} token have a fee of only 0.15%`}</h5>
                   </div>
                 </AutoColumn>
               )}
@@ -455,8 +471,8 @@ export default function Swap() {
                     {swapInputError
                       ? swapInputError
                       : priceImpactSeverity > 3 && !isExpertMode
-                        ? `Price Impact Too High`
-                        : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
+                      ? `Price Impact Too High`
+                      : `Swap${priceImpactSeverity > 2 ? ' Anyway' : ''}`}
                   </Text>
                 </ButtonPrimary>
               )}
@@ -484,15 +500,14 @@ export default function Swap() {
               </RowBetween>
             )}
           </AutoColumn>
-
         </Wrapper>
       </AppBody>
+      <Footer>“Raising the conscious awareness of the human race”</Footer>
       <AdvancedSwapDetailsDropdown
         trade={trade}
         allPlatformTrades={allPlatformTrades}
         onSelectedPlatformChange={setPlatformOverride}
       />
-      <Footer>“Raising the conscious awareness of the human race”</Footer>
     </>
   )
 }
