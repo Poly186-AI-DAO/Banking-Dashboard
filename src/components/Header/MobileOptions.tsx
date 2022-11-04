@@ -105,7 +105,7 @@ export default function MobileOptions({ history }: { history: any }) {
             </StyledNavLink>
           </Box>
           <Box>
-            <StyledExternalLink id={`bridge-nav-link`} href={`http://monette.poly186.io/`}>
+            <StyledExternalLink id={`bridge-nav-link`} href={`http://monette-bridge.poly186.io/`}>
               Bridge{' '}
               <Text ml="4px" fontSize="11px">
                 ↗
