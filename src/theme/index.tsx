@@ -10,6 +10,7 @@ import { Text, TextProps } from 'rebass'
 import { Colors } from './styled'
 import 'react-datepicker/dist/react-datepicker.min.css'
 import { transparentize } from 'polished'
+import backgroundImage from '../assets/images/background-image.png'
 
 export * from './components'
 
@@ -216,6 +217,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #101016;
 }
 
 * {
@@ -231,7 +233,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  
+  background-image: linear-gradient(180deg, #2E17F2 0%, #101016 100%);
 }
 
 a {
@@ -242,10 +244,9 @@ a {
 export const ThemedGlobalStyle = createGlobalStyle`
 html {
   color: ${({ theme }) => theme.text1};
-  background-color: ${({ theme }) => theme.grd1};
-  background: linear-gradient(111.63deg, ${({ theme }) => theme.grd1} 0%, ${({ theme }) => theme.grd2} 49.48%, ${({
-  theme
-}) => theme.grd3} 100%);
+  background-image: url(${backgroundImage});
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body {
   min-height: 100vh;

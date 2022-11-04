@@ -35,7 +35,7 @@ const BodyWrapper = styled.div`
   flex-direction: column;
   min-height: calc(100vh - 86px);
   width: 100%;
-  padding-top: 60px;
+  padding-top: calc((12% + 0.15vw + 0.15vh - 86px));
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,8 +57,6 @@ const Marginer = styled.div`
   margin-top: 5rem;
 `
 
-
-
 export default function App() {
   return (
     <Suspense fallback={null}>
@@ -68,28 +66,30 @@ export default function App() {
           <HeaderWrapper>
             <Header />
           </HeaderWrapper>
-          <BodyWrapper>
-            <Popups />
-            <Web3ReactManager>
-              <Switch>
-                <Route exact strict path="/swap" component={Swap} />
-                <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
-                <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
-                <Route exact strict path="/find" component={PoolFinder} />
-                <Route exact strict path="/pool" component={Pool} />
-                <Route exact strict path="/create" component={AddLiquidity} />
-                <Route exact path="/add" component={AddLiquidity} />
-                {/* <Route exact strict path="/governance" component={GovPages} /> */}
-                {/* <Route exact strict path="/governance/:asset/pairs" component={GovPages} /> */}
-                <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
-                <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
-                <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-                <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-                <Route component={RedirectPathToSwapOnly} />
-              </Switch>
-            </Web3ReactManager>
-            <Marginer />
-          </BodyWrapper>
+          <div style={{ width: '100%' }}>
+            <BodyWrapper>
+              <Popups />
+              <Web3ReactManager>
+                <Switch>
+                  <Route exact strict path="/swap" component={Swap} />
+                  <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
+                  <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
+                  <Route exact strict path="/find" component={PoolFinder} />
+                  <Route exact strict path="/pool" component={Pool} />
+                  <Route exact strict path="/create" component={AddLiquidity} />
+                  <Route exact path="/add" component={AddLiquidity} />
+                  {/* <Route exact strict path="/governance" component={GovPages} /> */}
+                  {/* <Route exact strict path="/governance/:asset/pairs" component={GovPages} /> */}
+                  <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
+                  <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
+                  <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
+                  <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+                  <Route component={RedirectPathToSwapOnly} />
+                </Switch>
+              </Web3ReactManager>
+              <Marginer />
+            </BodyWrapper>
+          </div>
         </AppWrapper>
       </HashRouter>
     </Suspense>

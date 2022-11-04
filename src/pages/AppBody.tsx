@@ -14,6 +14,10 @@ export const BodyWrapper = styled(DarkCard)<{ tradeDetailsOpen?: boolean }>`
   ::before {
     background: #101010;
   }
+  @media screen and (min-width: 1500px) {
+    max-width: 40%;
+    height: 40%;
+  }
 `
 
 interface AppBodyProps {

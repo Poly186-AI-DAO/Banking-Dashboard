@@ -84,9 +84,9 @@ const Blurb = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.bg1};
-  background-image: url(${BeeLogo});
-  background-repeat: no-repeat;
+  // background: ${({ theme }) => theme.bg1};
+  // background-image: url(${BeeLogo});
+  // background-repeat: no-repeat;
   background-size: 80%;
   background-position: center center;
   height: 76px;
@@ -364,7 +364,7 @@ export default function WalletModal({
         </ContentWrapper>
         <Blurb as="a" href="https://wiki.1hive.org/" rel="noopener noreferrer" target="_blank">
           <TYPE.body fontWeight={700} fontSize="10px" color="text1" letterSpacing="3px" marginBottom="8px">
-            A 1HIVE PRODUCT
+            A POLY186 PRODUCT
           </TYPE.body>
           {/* <img src={BeeLogo} alt="1Hive" style={{ opacity: '50%' }} /> */}
         </Blurb>
