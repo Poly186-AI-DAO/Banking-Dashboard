@@ -122,7 +122,7 @@ export default function Swap() {
   const bestPricedTrade = allPlatformTrades?.[0] // the best trade is always the first
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
   const trade = showWrap ? undefined : potentialTrade
-
+  console.log(trade)
   const parsedAmounts = showWrap
     ? {
         [Field.INPUT]: parsedAmount,
@@ -408,7 +408,11 @@ export default function Swap() {
                 <RowBetween>
                   <ButtonConfirmed
                     onClick={approveCallback}
-                    disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
+                    disabled={
+                      approval !== ApprovalState.NOT_APPROVED ||
+                      approvalSubmitted ||
+                      trade?.executionPrice.baseCurrency.symbol === 'P8'
+                    }
                     width="48%"
                     altDisabledStyle={approval === ApprovalState.PENDING} // show solid button while waiting
                     confirmed={approval === ApprovalState.APPROVED}
@@ -440,7 +444,10 @@ export default function Swap() {
                     width="48%"
                     id="swap-button"
                     disabled={
-                      !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
+                      !isValid ||
+                      approval !== ApprovalState.APPROVED ||
+                      (priceImpactSeverity > 3 && !isExpertMode) ||
+                      trade?.executionPrice.baseCurrency.symbol === 'P8'
                     }
                     error={isValid && priceImpactSeverity > 2}
                   >
