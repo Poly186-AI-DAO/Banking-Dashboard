@@ -472,7 +472,12 @@ export default function Swap() {
                     }
                   }}
                   id="swap-button"
-                  disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
+                  disabled={
+                    !isValid ||
+                    (priceImpactSeverity > 3 && !isExpertMode) ||
+                    !!swapCallbackError ||
+                    trade?.executionPrice.baseCurrency.symbol === 'P8'
+                  }
                 >
                   <Text>
                     {swapInputError
