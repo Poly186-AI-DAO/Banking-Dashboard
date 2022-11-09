@@ -28,7 +28,7 @@ export const bitKeepInjected = new BitKeepInjectedConnector({
 export const walletlink = new WalletLinkConnector({
   supportedChainIds: [ChainId.MAINNET, ChainId.RINKEBY, ChainId.XDAI, ChainId.MATIC],
   url: 'https://poa-xdai.gateway.pokt.network/v1/lb/61140fc659501900341babff',
-  appName: 'Honeyswap'
+  appName: 'Monette'
 })
 
 // xdai only
