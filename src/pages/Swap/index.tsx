@@ -513,13 +513,14 @@ export default function Swap() {
             )}
           </AutoColumn>
         </Wrapper>
+        <AdvancedSwapDetailsDropdown
+          trade={trade}
+          allPlatformTrades={allPlatformTrades}
+          onSelectedPlatformChange={setPlatformOverride}
+        />
       </AppBody>
+
       <Footer>“Raising the conscious awareness of the human race”</Footer>
-      <AdvancedSwapDetailsDropdown
-        trade={trade}
-        allPlatformTrades={allPlatformTrades}
-        onSelectedPlatformChange={setPlatformOverride}
-      />
     </>
   )
 }
