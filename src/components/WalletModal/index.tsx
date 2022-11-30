@@ -362,7 +362,7 @@ export default function WalletModal({
             <OptionGrid>{getOptions()}</OptionGrid>
           )}
         </ContentWrapper>
-        <Blurb as="a" href="https://wiki.1hive.org/" rel="noopener noreferrer" target="_blank">
+        <Blurb as="a" href="https://poly186.io" rel="noopener noreferrer" target="_blank">
           <TYPE.body fontWeight={700} fontSize="10px" color="text1" letterSpacing="3px" marginBottom="8px">
             A POLY186 PRODUCT
           </TYPE.body>

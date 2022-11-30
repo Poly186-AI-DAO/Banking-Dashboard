@@ -4,8 +4,8 @@ import { NavLink, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { Text } from 'rebass'
 import { ExternalLink, TYPE } from '../../theme'
-import Logo from '../../assets/svg/logo.svg'
-import LogoDark from '../../assets/svg/logo_white.svg'
+import Logo from '../../assets/images/poly-logo.png'
+import LogoDark from '../../assets/images/poly-logo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useNativeCurrencyBalances } from '../../state/wallet/hooks'
@@ -102,7 +102,7 @@ const MobileSettingsWrap = styled.div`
 //   `}
 // `
 
-const HeaderRow = styled(RowFixed)<{ isDark: boolean }>`
+const HeaderRow = styled(RowFixed) <{ isDark: boolean }>`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     width: 100%;
   `};
@@ -141,7 +141,7 @@ const activeClassName = 'ACTIVE'
 
 const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName
-})<{ isActive?: boolean }>`
+}) <{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: left;
   outline: none;
@@ -177,12 +177,9 @@ const Title = styled.a`
 `
 
 const DXswapIcon = styled.div`
-  img {
+  .img {
     margin-left: 5px;
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 60px;
-    margin-bottom: -5px;
+    width: 30vw;
   }
 `
 
@@ -227,7 +224,7 @@ function Header({ history }: { history: any }) {
       <HeaderRow isDark={isDark}>
         <Title href=".">
           <DXswapIcon>
-            <img src={isDark ? LogoDark : Logo} alt="logo" />
+            <img className='app-logo img' src={isDark ? LogoDark : Logo} alt="logo" />
           </DXswapIcon>
         </Title>
         <HeaderLinks>
