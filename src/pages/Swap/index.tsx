@@ -11,7 +11,7 @@ import ConfirmSwapModal from '../../components/swap/ConfirmSwapModal'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 // import { SwapPoolTabs } from '../../components/NavigationTabs'
 import { AutoRow, RowBetween, RowFixed } from '../../components/Row'
-import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
+// import AdvancedSwapDetailsDropdown from '../../components/swap/AdvancedSwapDetailsDropdown'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
 import {
   ArrowWrapper,
@@ -513,11 +513,11 @@ export default function Swap() {
             )}
           </AutoColumn>
         </Wrapper>
-        <AdvancedSwapDetailsDropdown
+        {/* <AdvancedSwapDetailsDropdown
           trade={trade}
           allPlatformTrades={allPlatformTrades}
           onSelectedPlatformChange={setPlatformOverride}
-        />
+        /> */}
       </AppBody>
 
       <Footer>“Raising the conscious awareness of the human race”</Footer>
