@@ -179,7 +179,7 @@ const Title = styled.a`
 const DXswapIcon = styled.div`
   .img {
     margin-left: 5px;
-    width: 30vw;
+    width: calc(50vh * 0.4);
   }
 `
 

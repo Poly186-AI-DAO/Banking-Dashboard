@@ -35,7 +35,7 @@ export default function AdvancedSwapDetailsDropdown({
   ...rest
 }: AdvancedSwapDetailsDropdownProps) {
   const lastTrade = useLastTruthy(trade)
-
+  console.log(trade)
   return (
     <AdvancedDetailsFooter show={Boolean(trade)}>
       <SwapPlatformSelector
@@ -44,7 +44,6 @@ export default function AdvancedSwapDetailsDropdown({
         onSelectedPlatformChange={onSelectedPlatformChange}
       />
       <AdvancedSwapDetails {...rest} trade={trade ?? lastTrade ?? undefined} />
-      
     </AdvancedDetailsFooter>
   )
 }
